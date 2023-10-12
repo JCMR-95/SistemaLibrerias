@@ -35,11 +35,14 @@
               </li>
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Mis Datos</a>
+                  <a href="{{ url('Mis-Datos') }}" class="btn btn-default btn-flat">Mis Datos</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Salir</a>
+                  <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-default btn-flat">Salir</a>
                 </div>
+                <form method="post" id="logout-form" action="{{ route('logout') }}">
+                    @csrf
+                </form>
               </li>
             </ul>
           </li>
