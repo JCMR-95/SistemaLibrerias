@@ -3,7 +3,7 @@
 @section('contenido')
 
 <div class="content-wrapper">
-    <section>
+    <section class="content-header">
         <h1>Gestor de Usuarios</h1>
     </section>
 

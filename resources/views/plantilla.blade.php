@@ -151,12 +151,41 @@
         })
     })
 
+    $('.table').on('click', '.EliminarCliente', function(){
+        let Cid = $(this).attr('Cid');
+        let Cliente = $(this).attr('Cliente');
+
+        Swal.fire({
+            title: '¿Seguro que desea eliminar el Cliente: ' + Cliente + '?',
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'Cancelar',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Eliminar',
+            confirmButtonColor: '#3085d6'
+        }).then((result) => {
+            if(result.isConfirmed){
+                window.location = 'Eliminar-Cliente/' + Cid;
+            }
+        })
+    })
+
 </script>
 
 @if(session('UsuarioCreado') == 'OK')
     <script>
         Swal.fire(
             'El Usuario ha sido creado',
+            '',
+            'success'
+            )
+    </script>
+@endif
+
+@if(session('ClienteCreado') == 'OK')
+    <script>
+        Swal.fire(
+            'El Cliente ha sido creado',
             '',
             'success'
             )
@@ -172,6 +201,14 @@
         <script>
             $(document).ready(function(){
                 $('#EditarUsuario').modal('toggle');
+            })
+        </script>
+
+    @elseif($exp[1] == 'Editar-Cliente')
+
+        <script>
+            $(document).ready(function(){
+                $('#EditarCliente').modal('toggle');
             })
         </script>
 

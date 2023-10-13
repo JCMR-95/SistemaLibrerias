@@ -3,17 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\UsuariosController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\ClientesController;
 
 Route::get('/', function () {
     return view('modulos.Ingresar');
@@ -32,3 +22,10 @@ Route::post('Usuarios', [UsuariosController::class, 'store']);
 Route::get('Eliminar-Usuario/{id}', [UsuariosController::class, 'destroy']);
 Route::get('Editar-Usuario/{id}', [UsuariosController::class, 'edit']);
 Route::put('actualizar-Usuario/{id}', [UsuariosController::class, 'update']);
+
+Route::get('Clientes', [ClientesController::class, 'index']);
+Route::post('Clientes', [ClientesController::class, 'store']);
+
+Route::get('Editar-Cliente/{id}', [ClientesController::class, 'edit']);
+Route::put('actualizar-Cliente/{id}', [ClientesController::class, 'update']);
+Route::get('Eliminar-Cliente/{id}', [ClientesController::class, 'destroy']);
