@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\GeneroController;
 
 Route::get('/', function () {
     return view('modulos.Ingresar');
@@ -29,3 +30,9 @@ Route::post('Clientes', [ClientesController::class, 'store']);
 Route::get('Editar-Cliente/{id}', [ClientesController::class, 'edit']);
 Route::put('actualizar-Cliente/{id}', [ClientesController::class, 'update']);
 Route::get('Eliminar-Cliente/{id}', [ClientesController::class, 'destroy']);
+
+Route::get('Generos', [GeneroController::class, 'index']);
+Route::post('Generos', [GeneroController::class, 'store']);
+
+Route::put('actualizar-Genero/{genero}', [GeneroController::class, 'update']);
+Route::get('Eliminar-Genero/{id}', [GeneroController::class, 'destroy']);
