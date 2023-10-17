@@ -192,6 +192,16 @@
     </script>
 @endif
 
+@if(session('AutorCreado') == 'OK')
+    <script>
+        Swal.fire(
+            'El Autor ha sido creado',
+            '',
+            'success'
+            )
+    </script>
+@endif
+
 <?php
     $exp = explode('/', $_SERVER["REQUEST_URI"]);
 ?>
