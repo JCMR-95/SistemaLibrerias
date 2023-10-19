@@ -34,6 +34,9 @@
                                 <td>{{ $autor->nombre }}</td>
                                 <td>{{ $autor->biografia }}</td>
                                 <td>
+                                    <a href="{{ url('Autor-Libros/'.$autor->id) }}">
+                                        <button class="btn btn-primary">Libros</button>
+                                    </a>
                                     <form method="post" action="{{ url('Quitar-Autor/'.$autor->id) }}">
 
                                         @csrf

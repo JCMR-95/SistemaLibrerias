@@ -30,7 +30,9 @@
                                 <input type="text" class="form-control" name="nombre" value="{{$genero->nombre}}">
                             </div>
                             <div class="col-md-3">
-                                <button class="btn btn-primary">Ver Libros</button>
+                                <a href="{{ url('Genero-Libros/'.$genero->id) }}">
+                                    <button class="btn btn-primary" type="button">Ver Libros</button>
+                                </a>
                                 <button class="btn btn-success"><i class="fa fa-pencil"></i></button>
                                 <a href="{{ url('Eliminar-Genero/'.$genero->id) }}">
                                     <button class="btn btn-danger" type="button"><i class="fa fa-trash"></i></button>

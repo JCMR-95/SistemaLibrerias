@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Autores;
+use App\Models\Libro;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -49,5 +50,13 @@ class AutoresController extends Controller
         }
 
         return redirect('Autores');
+    }
+
+    public function autorLibros($idAutor)
+    {
+        $autor = Autores::find($idAutor);
+        $libros = Libro::all()->where('id_autor', $idAutor);
+
+        return view('modulos.Autor-Libros', compact('autor', 'libros'));
     }
 }

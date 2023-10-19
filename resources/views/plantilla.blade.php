@@ -170,6 +170,24 @@
         })
     })
 
+    $('.table').on('click', '.QuitarLibro', function(){
+        let Lid = $(this).attr('Lid');
+
+        Swal.fire({
+            title: '¿Seguro que desea quitar este libro?',
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'Cancelar',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Eliminar',
+            confirmButtonColor: '#3085d6'
+        }).then((result) => {
+            if(result.isConfirmed){
+                window.location = 'Eliminar-Libro/' + Lid;
+            }
+        })
+    })
+
 </script>
 
 @if(session('UsuarioCreado') == 'OK')
@@ -195,7 +213,17 @@
 @if(session('AutorCreado') == 'OK')
     <script>
         Swal.fire(
-            'El Autor ha sido creado',
+            'El Autor ha sido registrado',
+            '',
+            'success'
+            )
+    </script>
+@endif
+
+@if(session('LibroCreado') == 'OK')
+    <script>
+        Swal.fire(
+            'El Libro ha sido agregado',
             '',
             'success'
             )
@@ -221,6 +249,22 @@
                 $('#EditarCliente').modal('toggle');
             })
         </script>
+
+    @elseif($exp[1] == 'Libro-Sinopsis')
+
+    <script>
+        $(document).ready(function(){
+            $('#Sinopsis').modal('toggle');
+        })
+    </script>
+
+    @elseif($exp[1] == 'Editar-Libro')
+
+    <script>
+        $(document).ready(function(){
+            $('#EditarLibro').modal('toggle');
+        })
+    </script>
 
     @endif
 @endif

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Genero;
+use App\Models\Libro;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -39,5 +40,13 @@ class GeneroController extends Controller
         DB::table('generos')->whereId($id)->delete();
 
         return redirect('Generos');
+    }
+
+    public function generoLibros($idGenero)
+    {
+        $genero = Genero::find($idGenero);
+        $libros = Libro::all()->where('id_genero', $idGenero);
+
+        return view('modulos.Genero-Libros', compact('genero', 'libros'));
     }
 }
