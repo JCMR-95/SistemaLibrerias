@@ -60,4 +60,20 @@ class ClientesController extends Controller
 
         return redirect('Clientes');
     }
+
+    public function crearClienteVenta(Request $request)
+    {
+        $datos = request();
+
+        Clientes::create([
+            'nombre'=>$datos["nombre"],
+            'telefono'=>$datos["telefono"],
+            'documento'=>$datos["documento"],
+            'direccion'=>$datos["direccion"],
+            'fechaNac'=>$datos["fechaNac"]
+        ]);
+
+        //Sweetalert
+        return redirect('Crear-Ventas')->with('ClienteCreado','OK');
+    }
 }

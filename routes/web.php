@@ -7,6 +7,7 @@ use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\AutoresController;
 use App\Http\Controllers\LibroController;
+use App\Http\Controllers\VentasController;
 
 Route::get('/', function () {
     return view('modulos.Ingresar');
@@ -30,7 +31,7 @@ Route::post('Clientes', [ClientesController::class, 'store']);
 Route::get('Editar-Cliente/{id}', [ClientesController::class, 'edit']);
 Route::put('actualizar-Cliente/{id}', [ClientesController::class, 'update']);
 Route::get('Eliminar-Cliente/{id}', [ClientesController::class, 'destroy']);
-
+Route::post('Crear-Ventas', [ClientesController::class, 'crearClienteVenta']);
 
 Route::get('Generos', [GeneroController::class, 'index']);
 Route::post('Generos', [GeneroController::class, 'store']);
@@ -50,3 +51,12 @@ Route::get('Libro-Sinopsis/{id}', [LibroController::class, 'show']);
 Route::get('Editar-Libro/{id}', [LibroController::class, 'edit']);
 Route::put('Actualizar-Libro/{id}', [LibroController::class, 'update']);
 Route::get('Eliminar-Libro/{id}', [LibroController::class, 'destroy']);
+
+Route::get('Crear-Ventas', [VentasController::class, 'create']);
+Route::post('Crear-Ventas', [VentasController::class, 'store']);
+Route::get('Venta/{id}', [VentasController::class, 'venta']);
+Route::post('Venta/{id}', [VentasController::class, 'agregarLibroVenta']);
+Route::post('Quitar-Libro-Venta/{id}', [VentasController::class, 'quitarLibroVenta']);
+Route::post('Finalizar-Venta', [VentasController::class, 'finalizarVenta']);
+Route::get('Ver-Ventas', [VentasController::class, 'verVentas']);
+Route::get('Ver-Venta/{id}', [VentasController::class, 'verVenta']);
