@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inicio;
+use App\Models\Ventas;
+use App\Models\Libro;
+use App\Models\Clientes;
+use App\Models\Pedidos;
 use Illuminate\Http\Request;
 
 class InicioController extends Controller
@@ -15,72 +19,12 @@ class InicioController extends Controller
 
     public function index()
     {
-        return view('modulos.Inicio');
+        $ventas = Ventas::all()->where('estado', 'Finalizada');
+        $libros = Libro::all();
+        $clientes = Clientes::all();
+        $pedidos = Pedidos::all()->where('estado', 'En Camino');
+
+        return view('modulos.Inicio', compact('ventas', 'libros', 'clientes', 'pedidos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Inicio  $inicio
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Inicio $inicio)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Inicio  $inicio
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Inicio $inicio)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Inicio  $inicio
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Inicio $inicio)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Inicio  $inicio
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Inicio $inicio)
-    {
-        //
-    }
 }

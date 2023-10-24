@@ -8,6 +8,7 @@ use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\AutoresController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\VentasController;
+use App\Http\Controllers\PedidosController;
 
 Route::get('/', function () {
     return view('modulos.Ingresar');
@@ -60,3 +61,14 @@ Route::post('Quitar-Libro-Venta/{id}', [VentasController::class, 'quitarLibroVen
 Route::post('Finalizar-Venta', [VentasController::class, 'finalizarVenta']);
 Route::get('Ver-Ventas', [VentasController::class, 'verVentas']);
 Route::get('Ver-Venta/{id}', [VentasController::class, 'verVenta']);
+
+Route::get('Pedidos', [PedidosController::class, 'index']);
+Route::post('Pedidos', [PedidosController::class, 'store']);
+Route::get('Pedidos-Solicitados', [PedidosController::class, 'index']);
+Route::get('Pedidos-EnCamino', [PedidosController::class, 'index']);
+Route::get('Pedidos-Recibidos', [PedidosController::class, 'index']);
+Route::get('Gestionar-Pedido/{id}', [PedidosController::class, 'gestionar']);
+Route::post('Gestionar-Pedido/{id}', [PedidosController::class, 'libroPedido']);
+Route::post('CambEstadoPed/{id}', [PedidosController::class, 'cambiarEstado']);
+Route::delete('LibroP-Quitar/{id}', [PedidosController::class, 'quitarLibroP']);
+Route::post('Verificar/{id}', [PedidosController::class, 'verificarPedido']);
